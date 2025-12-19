@@ -1,0 +1,208 @@
+:root {
+    --bg-color: #fdfefd;
+    --text-color: #111;
+    --card-bg: rgba(255, 255, 255, 0.15);
+    --highlight: #8a2be2; /* magic purple */
+    --glass-blur: 12px;
+    --glow: 0 0 15px #00e5ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-color);
+    transition: all 0.5s ease-in-out;
+    overflow-x: hidden;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Dark theme */
+body.dark-theme {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    --text-color: #f4f4f4;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --highlight: #00e5ff;
+    --glow: 0 0 15px #00e5ff;
+}
+
+.container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    animation: fadeIn 1.5s ease-in-out;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header animation */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideInTop 1s ease;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* Cards grid */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Magic card style */
+.card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(var(--glass-blur));
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: floatUp 1.2s ease forwards;
+    border: 1px solid var(--highlight);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+body.dark-theme .card {
+    background: rgba(30, 30, 50, 0.9);
+    color: white;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: var(--glow), 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #667eea;
+}
+
+body.dark-theme .card h3 {
+    color: #a78bfa;
+}
+
+.card .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+}
+
+body.dark-theme .card .price {
+    color: #e0e0e0;
+}
+
+.card .change {
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.positive {
+    background: #d4edda;
+    color: #155724;
+}
+
+.negative {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Input search bar */
+input[type="text"] {
+    padding: 15px 20px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), var(--glow);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    background: var(--highlight);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.loading {
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 50px;
+    grid-column: 1 / -1;
+}
+
+/* =================== Animations =================== */
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideInTop {
+    0% { 
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    100% { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes floatUp {
+    0% { 
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    100% { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

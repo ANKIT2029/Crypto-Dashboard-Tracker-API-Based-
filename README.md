@@ -24,7 +24,6 @@ A sleek, real-time cryptocurrency price tracking dashboard built with **vanilla 
 > Dark Mode  
 > ![Dark Mode](https://via.placeholder.com/800x400?text=Dark+Mode+Preview)
 
-*(Replace placeholders with actual screenshots)*
 
 ---
 
